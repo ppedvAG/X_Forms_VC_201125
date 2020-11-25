@@ -3,6 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="X_Forms.Layouts.AbsoluteLay">
 
+    <!--In einem AbsoluteLayout ist jedem Element eine absolute Position zugeordnet-->
+    <!--Diese wird durch die Property LayouBounds defniert. Die vier Zahlen repräsentieren X-Position, Y-Position, Breite, Höhe-->
+    <!--Die Property LayoutFlags definiert, welche der vier Zahlen in relativen Werten angegeben sind, anstatt in standartmäßigen
+            absoluten Werten-->
     <AbsoluteLayout>
 
         <BoxView Color="Green"
