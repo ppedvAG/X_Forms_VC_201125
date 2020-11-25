@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:X_Forms"
+             x:Class="X_Forms.MainPage">
+
+    <ContentPage.Resources>
+        <x:String x:Key="BtnText">Hallo Welt</x:String>
+        <local:FactorConverter x:Key="factorConv"/>
+    </ContentPage.Resources>
+
+    <ScrollView>
+
+        <StackLayout Orientation="Vertical"
+                 HorizontalOptions="FillAndExpand"
+                 VerticalOptions="FillAndExpand"
+                 Padding="10, 20, 30, 40">
+
+            <Label x:Name="Lbl_Main"
+               Text="Hallo Welt"
+               TextColor="Red"/>
+
+            <Label>
+                Moin
+
+                <Label.TextColor>
+                    <OnIdiom Default="Blue" Phone="Green"/>
+                </Label.TextColor>
+
+                <Label.FontSize>
+                    <OnPlatform Default="15" Android="20" iOS="25"/>
+                </Label.FontSize>
+            </Label>
+
+            <Button x:Name="Btn_KlickMich"
+                Text="Klick mich"
+                Clicked="Btn_KlickMich_Clicked"/>
+
+            <Entry x:Name="Ent_Vorname"
+               Placeholder="Vorname"
+               Keyboard="Text"/>
+            <Entry x:Name="Ent_Nachname"
+               Placeholder="Nachname"/>
+
+            <Button x:Name="Btn_Show"
+                Text="{StaticResource BtnText}"
+                FontSize="{StaticResource FontSize}"
+                Style="{StaticResource BtnStyle}"
+                Clicked="Btn_Show_Clicked"/>
+
+            <ListView x:Name="LstV_Namen" HeightRequest="350"
+                  ItemsSource="{Binding NamensListe}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Label Text="{Binding}"/>
+
+                            <ViewCell.ContextActions>
+                                <MenuItem Text="Löschen" Clicked="MenuItem_Clicked" CommandParameter="{Binding}"/>
+                            </ViewCell.ContextActions>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <StackLayout Orientation="Horizontal">
+                <Slider x:Name="Sdr_Binding"
+                    Minimum="0"
+                    Maximum="100"
+                    WidthRequest="250"/>
+                <Label Text="{Binding Source={x:Reference Sdr_Binding}, Path=Value, StringFormat='Wert: {0}', Mode=OneWay}"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal">
+                <Slider x:Name="Sdr_Binding_1"
+                    Minimum="0"
+                    Maximum="100"
+                    WidthRequest="250"/>
+                <Label Text="{Binding Source={x:Reference Sdr_Binding_1}, Path=Value, 
+                   StringFormat='Wert: {0}', Mode=OneWay,
+                   Converter={StaticResource factorConv}, ConverterParameter=2.5}"/>
+            </StackLayout>
+
+        </StackLayout>
+
+    </ScrollView>
+
+</ContentPage>

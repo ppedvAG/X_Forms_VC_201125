@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="X_Forms.Layouts.StackLay">
+
+    <StackLayout HorizontalOptions="FillAndExpand"
+                 VerticalOptions="FillAndExpand"
+                 Spacing="20"
+                 Padding="10, 20, 30, 40"
+                 Orientation="Vertical">
+
+        <Label Text="Label"
+               FontSize="25"
+               BackgroundColor="Green"/>
+
+        <Label Text="Label"
+               FontSize="25"
+               BackgroundColor="Blue"
+               VerticalOptions="FillAndExpand"/>
+
+        <Label Text="Label"
+               FontSize="25"
+               BackgroundColor="Orange"
+               VerticalOptions="FillAndExpand"/>
+
+        <Label Text="Label"
+               FontSize="25"
+               BackgroundColor="Red"/>
+
+    </StackLayout>
+    
+</ContentPage>
