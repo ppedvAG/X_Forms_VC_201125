@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Xamarin.Essentials;
 
 namespace X_Forms
 {
@@ -18,6 +19,9 @@ namespace X_Forms
         //Konstruktor
         public MainPage()
         {
+            //Zugriff auf die Battery-Klasse aus Xamarin.Essentials zum Zugriff auf den Batteriestatus
+            Properties.Resources.Culture = new System.Globalization.CultureInfo("de");
+
             //Initialisierung der UI (Xaml-Datei). Sollte immer erste Aktion des Konstruktors sein
             InitializeComponent();
 
@@ -35,6 +39,13 @@ namespace X_Forms
             //Durch Setzen des BindingContextes nehmen Kurzbindungen aus dem XAML-Code automatisch Bezug auf die Properties
             //des im BindingContext gesetzten Objekts
             this.BindingContext = this;
+
+            //Zugriff auf die Battery-Klasse aus Xamarin.Essentials zum Zugriff auf den Batteriestatus (benötigt Permission in OS-Projekten)
+            Lbl_Battery.Text = Battery.State.ToString() + " | State: " + Battery.ChargeLevel * 100 + "%";
+
+            //Zuweisung von Sprachressourcen an UI-Elemente als Alternative zur x:Static-Bindung (vgl. Resource.resx und Resource.de.resx)
+            //Btn_Localisation.Text = Resource.String_Btn;
+            //Lbl_Localisation.Text = Resource.String_Lbl;
         }
 
         //EventHandler
@@ -77,13 +88,39 @@ namespace X_Forms
         private void Button_Clicked(object sender, EventArgs e)
         {
             //Aufruf einer neuen Seite innerhalb der aktuellen NavigationPage 
-            Navigation.PushAsync(new Layouts.StackLay());
+            Navigation.PushAsync(new Navigation.TabbedBsp());
         }
     
         private void Button2_Clicked(object sender, EventArgs e)
         {
             //Aufruf einer neuen Seite innerhalb der aktuellen NavigationPage, welche aber keinen 'Zurück'-Button anzeigt
             Navigation.PushModalAsync(new Layouts.GridLay());
+        }
+
+        private void Button3_Clicked(object sender, EventArgs e)
+        {
+            //Aufruf einer neuen Seite innerhalb der aktuellen NavigationPage 
+            Navigation.PushAsync(new Navigation.CarouselBsp());
+        }
+
+        private void ToolbarItem_Clicked(object sender, EventArgs e)
+        {
+            NamensListe.Clear();
+        }
+
+        private void Btn_MC_Clicked(object sender, EventArgs e)
+        {
+            //Mittels des MessagingCenters können zwei voneinander unabhängige Objekte mittels eines Sender/Subscriber-Prinzips
+            //miteinander kommunizieren
+
+            //Instanziierung des Emfänger-Objekts (dieses muss zum Zeitpunkt der Nachricht-Sendes bereits existieren)
+            Page page = new MC_SubscriberPage();
+
+            //Senden der Nachricht inkl. Sender, Titel und Inhalt
+            MessagingCenter.Send(this, "Gesendeter Text", Ent_Vorname.Text);
+
+            //Navigation zum Empfänger-Objekt (vgl. MC_SubscriberPage.xaml)
+            Navigation.PushAsync(page);
         }
     }
 }

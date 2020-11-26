@@ -6,6 +6,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:X_Forms"
+             xmlns:prop="clr-namespace:X_Forms.Properties"   
              x:Class="X_Forms.MainPage"
              Title="MAIN">
 
@@ -57,8 +58,10 @@
             <!--Verweis auf Beispiel-Layouts (vgl. CodeBehind und BspLayouts)-->
             <StackLayout Orientation="Horizontal"
                          HorizontalOptions="CenterAndExpand">
-                <Button Text="GOTO StackLayout"
+                <Button Text="GOTO Tabbed"
                         Clicked="Button_Clicked"/>
+                <Button Text="GOTO Carousel"
+                        Clicked="Button3_Clicked"/>
                 <Button Text="GOTO GridLayout"
                         Clicked="Button2_Clicked"/>
             </StackLayout>
@@ -127,9 +130,28 @@
                    StringFormat='Wert: {0}', Mode=OneWay,
                    Converter={StaticResource factorConv}, ConverterParameter=2.5}"/>
             </StackLayout>
+            
+            <!--Beispiele für lokalisierte Beschriftungen (vgl. CodeBehind sowie Resource.resx und Resource.de.resx)-->
+            <!--Mittels der x:Static-Bindung können Properties an resx-Files gebunden werden-->
+            <Label x:Name="Lbl_Localisation"
+                    Text="{x:Static prop:Resources.Lbl_String}"/>
+
+            <!--Button zum Senden einer MC-Nachricht (vgl. CodeBehind und MC_SubscriberPage.cs)-->
+            <Button x:Name="Btn_MC"
+                    Text="{x:Static prop:Resources.Btn_String}"
+                    Clicked="Btn_MC_Clicked"/>
+
+
+            <!--Label zum Anzeigen des Batterie-Status mittels Xamarin.Essentials (vgl. CodeBehind)-->
+            <Label x:Name="Lbl_Battery"/>
 
         </StackLayout>
 
     </ScrollView>
+
+    <!--Wird die ContentPage in einer Navigation Page angezeigt, hat diese Zugriff auf die ToolBar-->
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Clear List" Clicked="ToolbarItem_Clicked"/>
+    </ContentPage.ToolbarItems>
 
 </ContentPage>

@@ -10,6 +10,6 @@
     <Application.Resources>
         <!--Resourcen können in RessourceDictionaries definiert werden, um sie appübergreifend zu verwenden (vgl. RessourceDict.xaml). 
         Solche Dictionaries müssen innerhalb der App angemeldet werden.-->
-        <ResourceDictionary Source="RessourceDict.xaml"/>
+        <ResourceDictionary Source="ResourceDict.xaml"/>
     </Application.Resources>
 </Application>

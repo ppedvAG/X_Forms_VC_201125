@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--Mittels der Carousel-Navigation kann der User mittels Links-Rechts-Swipe zwischen den ContentPages wechseln-->
+<CarouselPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="X_Forms.Navigation.CarouselBsp"
+             xmlns:layouts="clr-namespace:X_Forms.Layouts">
+    <ContentPage Title="Tab 1">
+        <Label Text="Tab 1" HorizontalOptions="Center" VerticalOptions="Center"/>
+    </ContentPage>
+    <layouts:AbsoluteLay Title="Absolute"/>
+    <layouts:GridLay Title="Grid"/>
+    <layouts:RelativeLay Title="Relative"/>
+</CarouselPage>

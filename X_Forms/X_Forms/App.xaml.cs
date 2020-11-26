@@ -16,7 +16,10 @@ namespace X_Forms
             //MainPage = new MainPage();
 
             //Zuweisung der MainPage - Property zu einer NavigationPage(ermöglicht Stack - Navigation) mit Angabe der Startpage.
-            MainPage = new NavigationPage(new MainPage());
+            //MainPage = new NavigationPage(new MainPage());
+
+
+            MainPage = new Navigation.MasterDetail.MDP();
 
         }
 
@@ -25,7 +28,7 @@ namespace X_Forms
         //Methoden, welche zu bestimmten globalen Events ausgeführt werden (Start, Unterbrechen der App [Sleep], Wiederaktivierung der App [Resume])
         protected override void OnStart()
         {
-            (MainPage as NavigationPage).CurrentPage.DisplayAlert("Time", $"Startzeit: {DateTime.Now}", "Ok");
+            ((MainPage as Navigation.MasterDetail.MDP).Detail as NavigationPage).CurrentPage.DisplayAlert("Time", $"Startzeit: {DateTime.Now}", "Ok");
         }
 
         protected override void OnSleep()
@@ -35,7 +38,7 @@ namespace X_Forms
 
         protected override void OnResume()
         {
-            (MainPage as NavigationPage).CurrentPage.DisplayAlert("Time", $"Geschlafene Zeit: {DateTime.Now.Subtract(TimeStamp).TotalSeconds}", "Ok");
+            ((MainPage as Navigation.MasterDetail.MDP).Detail as NavigationPage).CurrentPage.DisplayAlert("Time", $"Geschlafene Zeit: {DateTime.Now.Subtract(TimeStamp).TotalSeconds}", "Ok");
         }
     }
 }
