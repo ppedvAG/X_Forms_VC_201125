@@ -122,5 +122,12 @@ namespace X_Forms
             //Navigation zum Empfänger-Objekt (vgl. MC_SubscriberPage.xaml)
             Navigation.PushAsync(page);
         }
+
+        private async void Btn_Youtube_Clicked(object sender, EventArgs e)
+        {
+            //Öffnen der Youtube-App über die Launcher-Klasse von Xamarin.Essentials per URI (Packagename://ÜbergebeneDaten <- Hier das Youtube-Video)
+            if (await Launcher.CanOpenAsync("vnd.youtube://"))
+                await Launcher.OpenAsync("vnd.youtube://rLKnqR9Oqh8");
+        }
     }
 }

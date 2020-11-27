@@ -40,7 +40,9 @@ namespace X_Forms.Navigation.MasterDetail
                     new MDPMasterMenuItem { Id = 0, Title = "Startseite", TargetType=typeof(MainPage) },
                     new MDPMasterMenuItem { Id = 1, Title = "StackLayout", TargetType=typeof(Layouts.StackLay) },
                     new MDPMasterMenuItem { Id = 2, Title = "RelativeLayout", TargetType=typeof(Layouts.RelativeLay) },
-                    new MDPMasterMenuItem { Id = 2, Title = "PersonenDb", TargetType=typeof(PersonenDb.Navigation.MDP) },
+                    new MDPMasterMenuItem { Id = 3, Title = "PersonenDb", TargetType=typeof(PersonenDb.Navigation.MDP) },
+                    new MDPMasterMenuItem { Id = 4, Title = "MVVM Beispiel", TargetType=typeof(BspMVVM.View.MainView) },
+                    new MDPMasterMenuItem { Id = 5, Title = "GoogleBooks Übung", TargetType=typeof(Uebungen.GoogleBooks.View.MainView) },
                 });
             }
 

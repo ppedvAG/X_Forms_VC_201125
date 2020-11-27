@@ -144,6 +144,9 @@
 
             <!--Label zum Anzeigen des Batterie-Status mittels Xamarin.Essentials (vgl. CodeBehind)-->
             <Label x:Name="Lbl_Battery"/>
+            
+            <!--Button zum Öffnen der Youtube-App-->
+            <Button x:Name="Btn_Youtube" Text="Goto Youtube" Clicked="Btn_Youtube_Clicked"/>
 
         </StackLayout>
 
